@@ -1,0 +1,41 @@
+# Secrets / env
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+env/
+ENV/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local dev artifacts
+*.log
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Generated assets we don't want in version control
+hero-images/cache/
+.cache/
+
+# Claude Code session files
+.claude/
+
+# OS
+desktop.ini

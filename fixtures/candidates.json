@@ -1,0 +1,98 @@
+[
+  {
+    "source_name": "FTC Press Releases",
+    "source_weight": 10,
+    "headline": "FTC settles with three dealer groups over CARS Rule add-on disclosure violations",
+    "url": "https://www.ftc.gov/news-events/news/press-releases/2026/04/ftc-settles-cars-rule-2026",
+    "summary": "The Federal Trade Commission today announced settlements totaling $4.7M with three multi-rooftop dealer groups for violations of the Combatting Auto Retail Scams Rule, specifically around aggregated add-on disclosures and timing of consumer acknowledgement.",
+    "published": "2026-04-19T14:00:00Z",
+    "importance_score": 0.0,
+    "novelty_score": 0.0,
+    "final_rank": 0,
+    "section_assignment": null
+  },
+  {
+    "source_name": "Cox Automotive Industry Insights",
+    "source_weight": 10,
+    "headline": "Manheim Used Vehicle Value Index falls 1.4% MoM in April; compact SUV leads decline",
+    "url": "https://www.coxautoinc.com/market-insights/manheim-used-vehicle-value-index-april-2026/",
+    "summary": "The April Manheim Used Vehicle Value Index posted a 1.4% month-over-month decline. Compact SUV (-3.1%) led the drop while full-size pickup (+0.6%) continued to defy the trend.",
+    "published": "2026-04-19T09:00:00Z",
+    "importance_score": 0.0,
+    "novelty_score": 0.0,
+    "final_rank": 0,
+    "section_assignment": null
+  },
+  {
+    "source_name": "F&I and Showroom (FI Magazine)",
+    "source_weight": 10,
+    "headline": "GM Financial expands subprime tier 4-5 approvals 9% YoY in Q1; Ford Credit tightens",
+    "url": "https://www.fi-magazine.com/news/gm-financial-q1-2026-subprime-expansion",
+    "summary": "GM Financial reported a 9% year-over-year increase in tier 4-5 subprime approvals in Q1, while Ford Credit moved in the opposite direction with a 6% tightening of the same band.",
+    "published": "2026-04-19T11:30:00Z",
+    "importance_score": 0.0,
+    "novelty_score": 0.0,
+    "final_rank": 0,
+    "section_assignment": null
+  },
+  {
+    "source_name": "CFPB Newsroom",
+    "source_weight": 10,
+    "headline": "CFPB issues guidance on Holder Rule application to digital retail finance contracts",
+    "url": "https://www.consumerfinance.gov/about-us/newsroom/cfpb-holder-rule-digital-finance-2026/",
+    "summary": "New CFPB guidance clarifies how the Holder Rule applies to retail installment contracts originated through digital storefronts and third-party application portals.",
+    "published": "2026-04-19T16:15:00Z",
+    "importance_score": 0.0,
+    "novelty_score": 0.0,
+    "final_rank": 0,
+    "section_assignment": null
+  },
+  {
+    "source_name": "Automotive News",
+    "source_weight": 10,
+    "headline": "Penske Automotive Q1 net income up 6% on F&I per-vehicle gross gains",
+    "url": "https://www.autonews.com/retail/penske-q1-2026-results",
+    "summary": "Penske Automotive Group reported Q1 net income of $267M, up 6% YoY, driven by per-vehicle F&I gross profit gains of $112 across both new and used.",
+    "published": "2026-04-19T08:00:00Z",
+    "importance_score": 0.0,
+    "novelty_score": 0.0,
+    "final_rank": 0,
+    "section_assignment": null
+  },
+  {
+    "source_name": "CBT News",
+    "source_weight": 9,
+    "headline": "Survey: 62% of dealer BDC appointments lack qualifying data; close rate gap widens",
+    "url": "https://www.cbtnews.com/bdc-qualification-survey-april-2026/",
+    "summary": "A new operator survey of 412 U.S. franchised dealers found 62% of BDC-set appointments lacked at least two of three qualifying data points (budget, trade, credit comfort).",
+    "published": "2026-04-19T13:45:00Z",
+    "importance_score": 0.0,
+    "novelty_score": 0.0,
+    "final_rank": 0,
+    "section_assignment": null
+  },
+  {
+    "source_name": "NHTSA Recalls",
+    "source_weight": 9,
+    "headline": "NHTSA expands Stellantis recall to 1.4M Jeep Wrangler / Gladiator units over fuel pump driver",
+    "url": "https://www.nhtsa.gov/recalls/stellantis-fuel-pump-driver-april-2026",
+    "summary": "The expanded recall covers MY 2018-2024 Jeep Wrangler and Gladiator units. Dealers will be notified next week with parts allocation.",
+    "published": "2026-04-19T10:00:00Z",
+    "importance_score": 0.0,
+    "novelty_score": 0.0,
+    "final_rank": 0,
+    "section_assignment": null
+  },
+  {
+    "source_name": "Tekion News",
+    "source_weight": 8,
+    "headline": "Tekion announces Q2 release: native CARS Rule disclosure flow + audit log export",
+    "url": "https://www.tekion.com/news/q2-2026-release-cars-rule",
+    "summary": "Tekion's Q2 platform release includes a native CARS Rule disclosure capture flow and an audit log export sized for FTC inquiry response.",
+    "published": "2026-04-18T17:30:00Z",
+    "importance_score": 0.0,
+    "novelty_score": 0.0,
+    "final_rank": 0,
+    "section_assignment": null
+  }
+]

@@ -1,0 +1,51 @@
+name: Nightly analytics pull
+
+on:
+  schedule:
+    # 23:13 UTC daily — fetches the day's open/click data after most opens have landed
+    - cron: "13 23 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      BEEHIIV_API_KEY: ${{ secrets.BEEHIIV_API_KEY }}
+      BEEHIIV_PUBLICATION_ID: ${{ secrets.BEEHIIV_PUBLICATION_ID }}
+      GOOGLE_SHEETS_CREDENTIALS_JSON: ${{ secrets.GOOGLE_SHEETS_CREDENTIALS_JSON }}
+      GOOGLE_SHEETS_SPREADSHEET_ID: ${{ secrets.GOOGLE_SHEETS_SPREADSHEET_ID }}
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+      - run: pip install -r requirements.txt
+      - name: Pull today's stats
+        run: |
+          # Read today's post id from the audit JSON, then fetch + persist stats
+          TODAY=$(date -u +%Y-%m-%d)
+          AUDIT="issues/${TODAY}.json"
+          if [ ! -f "$AUDIT" ]; then
+            echo "No issue published today; skipping"
+            exit 0
+          fi
+          POST_ID=$(python -c "import json; print(json.load(open('$AUDIT'))['beehiiv_post_id'])")
+          python -m pipeline.analytics --post-id "$POST_ID"
+      - name: Commit analytics state
+        run: |
+          git config user.name "dealer-ops-daily-bot"
+          git config user.email "bot@dealeropsdaily.com"
+          git add data/analytics.json || true
+          if git diff --cached --quiet; then
+            echo "No analytics changes"
+          else
+            git commit -m "analytics: $(date -u +%Y-%m-%d)"
+            git push
+          fi

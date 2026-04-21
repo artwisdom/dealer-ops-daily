@@ -1,0 +1,43 @@
+name: Monthly self-improvement loops + sponsor pipeline
+
+on:
+  schedule:
+    - cron: "23 13 1 * *"   # 13:23 UTC, 1st of every month
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  monthly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Loop 3 — content format evolution
+        run: python -m pipeline.loops.format_evolution
+
+      - name: Loop 5 — growth channel reallocation report
+        run: python -m pipeline.loops.growth_channels
+
+      - name: Phase 3 — generate sponsor prospect list
+        run: python -m pipeline.growth.sponsors
+
+      - name: Phase 3 — draft outreach emails (saved, never sent)
+        run: python -m pipeline.growth.outreach
+
+      - name: Commit drafts + proposed format changes
+        run: |
+          git config user.name "dealer-ops-daily-bot"
+          git config user.email "bot@dealeropsdaily.com"
+          git add drafts/ prompts/proposed-format-*.md 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m "monthly: $(date -u +%Y-%m)" && git push)

@@ -1,0 +1,53 @@
+[
+  {
+    "id": "off_1",
+    "name": "DealerSocket Daily Tips",
+    "tags": [
+      "automotive",
+      "dealer-ops",
+      "b2b"
+    ],
+    "description": "Daily 1-tip-1-action newsletter for variable ops managers.",
+    "audience": "U.S. franchised dealer GMs and variable ops directors.",
+    "payout_per_sub": 4.2,
+    "min_quality_bar": "Web Boost"
+  },
+  {
+    "id": "off_2",
+    "name": "F&I Profitability Briefing",
+    "tags": [
+      "fni",
+      "finance",
+      "compliance"
+    ],
+    "description": "Weekly F&I product economics and compliance digest.",
+    "audience": "F&I directors and finance managers at franchised dealers.",
+    "payout_per_sub": 5.1,
+    "min_quality_bar": "Web Boost"
+  },
+  {
+    "id": "off_3",
+    "name": "Crypto Trader Daily",
+    "tags": [
+      "crypto",
+      "investing"
+    ],
+    "description": "Daily crypto market signals.",
+    "audience": "Retail crypto traders.",
+    "payout_per_sub": 6.9,
+    "min_quality_bar": "Email Boost"
+  },
+  {
+    "id": "off_4",
+    "name": "Manheim Wholesale Watch",
+    "tags": [
+      "used-car",
+      "wholesale",
+      "auction"
+    ],
+    "description": "Twice-weekly used-car wholesale market briefing.",
+    "audience": "Used-car managers and inventory specialists.",
+    "payout_per_sub": 3.8,
+    "min_quality_bar": "Web Boost"
+  }
+]

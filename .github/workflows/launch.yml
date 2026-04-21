@@ -1,0 +1,48 @@
+name: Launch (preflight + monitor + postmortem)
+
+# This workflow has three manual-only entry points used during launch week.
+# It does NOT run on a schedule — operator chooses when to invoke each step.
+
+on:
+  workflow_dispatch:
+    inputs:
+      step:
+        description: "Which launch step to run"
+        type: choice
+        required: true
+        default: preflight
+        options:
+          - preflight
+          - mark-launched
+          - postmortem
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  run-step:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      BEEHIIV_API_KEY: ${{ secrets.BEEHIIV_API_KEY }}
+      BEEHIIV_PUBLICATION_ID: ${{ secrets.BEEHIIV_PUBLICATION_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Run step
+        run: python -m pipeline.launch ${{ inputs.step }}
+
+      - name: Commit launch state changes
+        if: ${{ inputs.step != 'preflight' }}
+        run: |
+          git config user.name "dealer-ops-daily-bot"
+          git config user.email "bot@dealeropsdaily.com"
+          git add data/launch_state.json data/launch_log.json 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m "launch: ${{ inputs.step }} $(date -u +%Y-%m-%d)" && git push)

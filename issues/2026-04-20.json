@@ -1,0 +1,85 @@
+{
+  "subject_a": "Sunday digest: this week in dealer ops",
+  "subject_b": "5 days, 3 stories that mattered",
+  "subject_c": "What to watch next week",
+  "preheader": "The week's top stories + what's next.",
+  "issue_title": "This week in Dealer Ops Daily — week of April 14",
+  "cold_open": "Five issues this week, 0 clicks. Here's what mattered most and what's on the radar for next week.",
+  "sections": [
+    {
+      "name": "top-stories",
+      "stories": [
+        {
+          "headline": "FTC settles with three dealer groups over CARS Rule add-on disclosure violations",
+          "body": "The Federal Trade Commission today announced settlements totaling $4.7M with three multi-rooftop dealer groups for violations of the Combatting Auto Retail Scams Rule, specifically around aggregated add-on disclosures and timing of consumer acknowledgement.",
+          "action_line": "Why it matters: This was the dominant story on 2026-04-20 and continues to develop.",
+          "sources": [
+            {
+              "outlet": "FTC Press Releases",
+              "url": "https://www.ftc.gov/news-events/news/press-releases/2026/04/ftc-settles-cars-rule-2026"
+            }
+          ],
+          "source_ids": []
+        }
+      ]
+    },
+    {
+      "name": "data-recap",
+      "stories": [
+        {
+          "headline": "What the week's data showed",
+          "body": "This week we sent 0 issues with an average open rate of 0.0% and click rate of 0.0%. Total clicks: 0; unsubscribes: 0.",
+          "action_line": "Compare to the 30-day baseline below; flag any open-rate drop >15% to Loop 6.",
+          "sources": [
+            {
+              "outlet": "Internal analytics",
+              "url": "#"
+            }
+          ],
+          "source_ids": []
+        }
+      ]
+    },
+    {
+      "name": "watch-next-week",
+      "stories": [
+        {
+          "headline": "What to watch next week",
+          "body": "Next week's editorial theme: **Variable-ops hiring & comp — pay plan benchmarks**. Set source priorities accordingly: regulatory feeds for compliance weeks, Manheim/Cox feeds for used-car weeks, vendor newsrooms for tech weeks.",
+          "action_line": "Check the source weights in sources.yaml against the theme.",
+          "sources": [
+            {
+              "outlet": "Editorial calendar",
+              "url": "#"
+            }
+          ],
+          "source_ids": []
+        }
+      ]
+    }
+  ],
+  "tool_of_day": {
+    "product_id": "dealerintel",
+    "rationale": "DealerIntel: The dealer-tech analytics platform built by the same team. Spot leaks in your variable ops in 60 seconds.",
+    "disclosure_tag": "Affiliate"
+  },
+  "soft_footer": "Hit reply if a story you wanted to see this week didn't land.",
+  "hero_image_prompt": "Wide editorial illustration, Sunday morning light through window onto a coffee mug and open notebook with auto industry charts, no text, no people, slate-blue and amber palette.",
+  "metadata": {
+    "story_count": 3,
+    "word_count_estimate": 850,
+    "sources_used": [],
+    "affiliate_used": true,
+    "guardrail_self_check": {
+      "two_source_min": false,
+      "no_financial_advice": true,
+      "no_political_take": true,
+      "quotes_under_25_words": true,
+      "all_numbers_sourced": true
+    }
+  },
+  "hero_image_url": "https://placehold.co/1200x630/0f172a/f59e0b?text=Dealer+Ops+Daily",
+  "beehiiv_post_id": "dry-run-post-id",
+  "scheduled_send_at": "2026-04-20T11:00:00Z",
+  "dry_run": true
+}

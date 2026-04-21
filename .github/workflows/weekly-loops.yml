@@ -1,0 +1,41 @@
+name: Weekly self-improvement loops (Sunday)
+
+on:
+  schedule:
+    - cron: "17 14 * * 0"   # 14:17 UTC Sundays — after the weekend issues have analytics
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  weekly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Loop 1 — source quality scoring
+        run: python -m pipeline.loops.source_quality
+
+      - name: Loop 2 — subject-line optimization
+        run: python -m pipeline.loops.subject_lines
+
+      - name: Loop 4 — affiliate ROI rotation
+        run: python -m pipeline.loops.affiliate_roi
+
+      - name: Commit any updated source weights / rules / inventory
+        run: |
+          git config user.name "dealer-ops-daily-bot"
+          git config user.email "bot@dealeropsdaily.com"
+          git add sources.yaml prompts/subject-rules-current.md data/affiliates.json data/affiliate_watchlist.json 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m "loops: weekly run $(date -u +%Y-%m-%d)" && git push)

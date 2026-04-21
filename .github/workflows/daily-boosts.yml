@@ -1,0 +1,43 @@
+name: Daily Boost rotation
+
+on:
+  schedule:
+    - cron: "47 4 * * *"   # 04:47 UTC — runs before daily-issue so today's chosen partner is set
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: daily-boosts
+  cancel-in-progress: false
+
+jobs:
+  rotate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      BEEHIIV_API_KEY: ${{ secrets.BEEHIIV_API_KEY }}
+      BEEHIIV_PUBLICATION_ID: ${{ secrets.BEEHIIV_PUBLICATION_ID }}
+      DRY_RUN: ${{ inputs.dry_run || 'false' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python -m pipeline.growth.boosts ${{ inputs.dry_run && '--dry-run' || '' }}
+      - name: Commit boost history
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          git config user.name "dealer-ops-daily-bot"
+          git config user.email "bot@dealeropsdaily.com"
+          git add data/boost_history.json || true
+          git diff --cached --quiet || (git commit -m "boost: $(date -u +%Y-%m-%d)" && git push)

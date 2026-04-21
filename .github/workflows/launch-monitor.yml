@@ -1,0 +1,34 @@
+name: Launch monitor (auto-runs daily during week 1)
+
+on:
+  schedule:
+    # 23:55 UTC daily — runs after nightly-analytics has populated state
+    # Self-disables once 14 days past launch_date
+    - cron: "55 23 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      BEEHIIV_API_KEY: ${{ secrets.BEEHIIV_API_KEY }}
+      BEEHIIV_PUBLICATION_ID: ${{ secrets.BEEHIIV_PUBLICATION_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Capture today's metrics
+        run: python -m pipeline.launch monitor
+      - name: Commit launch_log
+        run: |
+          git config user.name "dealer-ops-daily-bot"
+          git config user.email "bot@dealeropsdaily.com"
+          git add data/launch_log.json 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m "launch-monitor: $(date -u +%Y-%m-%d)" && git push)

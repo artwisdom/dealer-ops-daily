@@ -1,0 +1,43 @@
+name: Daily threshold checks (Ad Network, SparkLoop, drift)
+
+on:
+  schedule:
+    - cron: "31 23 * * *"   # 23:31 UTC — after nightly-analytics has refreshed state
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      BEEHIIV_API_KEY: ${{ secrets.BEEHIIV_API_KEY }}
+      BEEHIIV_PUBLICATION_ID: ${{ secrets.BEEHIIV_PUBLICATION_ID }}
+      SPARKLOOP_API_KEY: ${{ secrets.SPARKLOOP_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Ad Network eligibility check
+        run: python -m pipeline.growth.ad_network
+
+      - name: SparkLoop LTV/CAC evaluation
+        run: python -m pipeline.growth.sparkloop
+
+      - name: Open-rate drift check (Loop 6)
+        run: python -m pipeline.loops.open_rate_drift
+
+      - name: Commit state changes
+        run: |
+          git config user.name "dealer-ops-daily-bot"
+          git config user.email "bot@dealeropsdaily.com"
+          git add data/state.json || true
+          git diff --cached --quiet || (git commit -m "state: thresholds $(date -u +%Y-%m-%d)" && git push)

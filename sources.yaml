@@ -1,0 +1,713 @@
+version: 1
+niche: dealer-ops-daily
+last_verified: 2026-04-20
+sources:
+  # =============================================================
+  # 1. INDUSTRY TRADE PRESS
+  # =============================================================
+  - name: Automotive News
+    category: trade_press
+    url: https://www.autonews.com/
+    rss: https://www.autonews.com/rss-feeds
+    weight: 10
+    update_frequency: daily
+    notes: Tier-1 source. Paywalled article bodies; headlines and dek summaries are in RSS. RSS index page lists multiple topical feeds (retail, F&I, used cars, OEM). Pipeline should pull retail and dealers feeds specifically.
+
+  - name: Automotive News Retail
+    category: trade_press
+    url: https://www.autonews.com/retail/
+    rss: null
+    weight: 10
+    update_frequency: daily
+    notes: Subsection feed exposed via the rss-feeds index. Retail/dealer-focused. If not available as an RSS endpoint, scrape the section page.
+
+  - name: WardsAuto / Automotive Dive
+    category: trade_press
+    url: https://www.wardsauto.com/
+    rss: null
+    weight: 8
+    update_frequency: daily
+    notes: WardsAuto merged with Automotive Dive in October 2025. No public RSS feed found. Use Automotive Dive feed (https://www.automotivedive.com/feeds/news/) which now hosts Wards content, or scrape the homepage.
+
+  - name: Automotive Dive
+    category: trade_press
+    url: https://www.automotivedive.com/
+    rss: https://www.automotivedive.com/feeds/news/
+    weight: 9
+    update_frequency: daily
+    notes: Industry Dive auto vertical. Strong on retail, regulatory, and OEM news. Now houses former WardsAuto staff and stories.
+
+  - name: CBT News
+    category: trade_press
+    url: https://www.cbtnews.com/
+    rss: https://www.cbtnews.com/feed/
+    weight: 9
+    update_frequency: daily
+    notes: Standard WordPress feed. Daily newscast plus written articles. Retail-focused, dealer interviews, F&I segments. High signal for Dealer Ops Daily.
+
+  - name: F&I and Showroom (FI Magazine)
+    category: trade_press
+    url: https://www.fi-magazine.com/
+    rss: https://www.fi-magazine.com/rss/
+    weight: 10
+    update_frequency: daily
+    notes: Bobit Studios property. Tier-1 source for F&I, compliance, products & menu selling content. Verify exact feed path — alternative is /feed.
+
+  - name: AutoSuccess
+    category: trade_press
+    url: https://www.autosuccessonline.com/
+    rss: https://www.autosuccessonline.com/feed
+    weight: 8
+    update_frequency: daily
+    notes: Babcox Media. Sales/training-heavy, light on regulatory but useful for tactics and vendor news.
+
+  - name: Auto Dealer Today
+    category: trade_press
+    url: https://www.autodealertodaymagazine.com/
+    rss: https://www.autodealertodaymagazine.com/rss
+    weight: 8
+    update_frequency: daily
+    notes: Bobit sister to F&I and Showroom. Operations-focused.
+
+  - name: Auto Remarketing
+    category: trade_press
+    url: https://www.autoremarketing.com/
+    rss: https://www.autoremarketing.com/rss.xml
+    weight: 9
+    update_frequency: daily
+    notes: Used-car wholesale and retail. Cherokee Media Group. RSS confirmed historically; verify URL on first crawl.
+
+  - name: Used Car News
+    category: trade_press
+    url: https://usedcarnews.com/
+    rss: https://usedcarnews.com/feed/
+    weight: 7
+    update_frequency: weekly
+    notes: Independent dealer focus. Standard WP feed.
+
+  - name: Digital Dealer / Dealer Magazine
+    category: trade_press
+    url: https://digitaldealer.com/
+    rss: https://digitaldealer.com/feed/
+    weight: 7
+    update_frequency: weekly
+    notes: Conference-driven publication. Useful for trend pieces and vendor announcements.
+
+  - name: Automotive Buy Sell Report
+    category: trade_press
+    url: https://www.automotivebuysellreport.com/
+    rss: null
+    weight: 7
+    update_frequency: weekly
+    notes: M&A and dealership transactions. RSS not publicly listed; scrape headline page. Niche-strategic for "deal of the week" content.
+
+  - name: Car Dealership Guy News (CDG)
+    category: trade_press
+    url: https://news.dealershipguy.com/
+    rss: https://news.dealershipguy.com/feed
+    weight: 9
+    update_frequency: daily
+    notes: Substack-based. Broad reach in dealer community. Use as a sentiment indicator for what dealers are talking about.
+
+  # =============================================================
+  # 2. OEM / AUTO INDUSTRY PRESS RELEASES
+  # =============================================================
+  - name: GM News
+    category: oem_press
+    url: https://news.gm.com/
+    rss: https://news.gm.com/home.rss
+    weight: 8
+    update_frequency: event
+    notes: Confirm exact RSS path on first crawl. Also see media.gm.com for detailed press kits. Filter for retail/dealer/incentive content.
+
+  - name: Ford Media Center
+    category: oem_press
+    url: https://media.ford.com/
+    rss: https://media.ford.com/content/fordmedia/fna/us/en/rss.html
+    weight: 8
+    update_frequency: event
+    notes: RSS index page lists multiple topical feeds (Sales/Financial Results, Marketing & Customer Service, etc.). Pipeline should pull the All Releases feed.
+
+  - name: Toyota USA Newsroom
+    category: oem_press
+    url: https://pressroom.toyota.com/
+    rss: https://pressroom.toyota.com/feed/atom
+    weight: 8
+    update_frequency: event
+    notes: Atom feed confirmed. Good for incentive/recall/sales-related news. Topical sub-feeds available at /rss-feeds/.
+
+  - name: Stellantis North America Media
+    category: oem_press
+    url: https://media.stellantisnorthamerica.com/
+    rss: null
+    weight: 7
+    update_frequency: event
+    notes: No public RSS confirmed. Mirror via PR Newswire Stellantis channel or scrape newsroom page.
+
+  - name: Honda News
+    category: oem_press
+    url: https://hondanews.com/
+    rss: https://hondanews.com/en-US/releases.rss
+    weight: 7
+    update_frequency: event
+    notes: Verify path on first crawl. Honda historically exposes per-channel feeds.
+
+  - name: Hyundai Motor America Press
+    category: oem_press
+    url: https://www.hyundainews.com/
+    rss: https://www.hyundainews.com/en-us/releases.rss
+    weight: 6
+    update_frequency: event
+    notes: Verify on first crawl. Useful for dealer incentive program news.
+
+  - name: PR Newswire Automotive
+    category: oem_press
+    url: https://www.prnewswire.com/news-releases/automotive-transportation-latest-news/automotive-list/
+    rss: https://www.prnewswire.com/rss/automotive-latest-news/automotive-latest-news-list.rss
+    weight: 7
+    update_frequency: daily
+    notes: Aggregates all automotive press releases. Will pull a lot of OEM, supplier, and dealer-vendor announcements. Filter by keyword.
+
+  - name: GlobeNewswire Automotive
+    category: oem_press
+    url: https://www.globenewswire.com/news/subjectcode/89/Automotive.html
+    rss: https://www.globenewswire.com/RssFeed/subjectcode/8-Automotive/feedTitle/GlobeNewswire%20-%20Automotive
+    weight: 6
+    update_frequency: daily
+    notes: Secondary PR wire. Catches releases that PR Newswire misses (especially Canadian dealer groups).
+
+  # =============================================================
+  # 3. GOVERNMENT / REGULATORY
+  # =============================================================
+  - name: FTC Press Releases
+    category: regulatory
+    url: https://www.ftc.gov/news-events/news/press-releases
+    rss: https://www.ftc.gov/feeds/press-release.xml
+    weight: 10
+    update_frequency: event
+    notes: Tier-1. Covers CARS Rule, Holder Rule, Safeguards Rule, dealer enforcement actions. Filter for "dealer", "auto", "vehicle".
+
+  - name: FTC Automobiles topic
+    category: regulatory
+    url: https://www.ftc.gov/industry/automobiles
+    rss: https://www.ftc.gov/feeds/press-release-automobiles.xml
+    weight: 10
+    update_frequency: event
+    notes: Subject-tagged feed exclusively for auto industry FTC actions. Verify exact URL via /stay-connected/rss.
+
+  - name: CFPB Newsroom
+    category: regulatory
+    url: https://www.consumerfinance.gov/about-us/newsroom/
+    rss: https://www.consumerfinance.gov/about-us/newsroom/feed/
+    weight: 10
+    update_frequency: event
+    notes: Tier-1 for auto-finance compliance, indirect lending oversight, fair lending enforcement.
+
+  - name: NHTSA Recalls
+    category: regulatory
+    url: https://www.nhtsa.gov/recalls
+    rss: https://www.nhtsa.gov/nhtsa-datasets-and-apis
+    weight: 9
+    update_frequency: daily
+    notes: NHTSA exposes a recalls API and SaferCar RSS via recalls.gov. Pipeline can poll the API directly (no key required) at api.nhtsa.gov/recalls/recallsByVehicle for vehicle-specific or use bulk dataset for daily ingest.
+
+  - name: NHTSA Press Releases
+    category: regulatory
+    url: https://www.nhtsa.gov/press-releases
+    rss: https://www.nhtsa.gov/press-releases/feed
+    weight: 8
+    update_frequency: event
+    notes: Verify feed URL — NHTSA Drupal site sometimes exposes /rss.xml or per-section feeds.
+
+  - name: California DMV News
+    category: regulatory
+    url: https://www.dmv.ca.gov/portal/news-and-media/
+    rss: null
+    weight: 7
+    update_frequency: event
+    notes: Leading-indicator state. No RSS found; scrape news listing weekly. CA DMV regs frequently signal national trends (BHPH, EV titling, electronic title).
+
+  - name: California DOI (Insurance) press
+    category: regulatory
+    url: https://www.insurance.ca.gov/0400-news/0100-press-releases/
+    rss: null
+    weight: 6
+    update_frequency: event
+    notes: Auto insurance market changes affect F&I product viability. Scrape monthly.
+
+  - name: Texas DMV News
+    category: regulatory
+    url: https://www.txdmv.gov/about-us/news
+    rss: null
+    weight: 6
+    update_frequency: event
+    notes: Second-largest state for franchise dealers. No RSS; scrape.
+
+  # =============================================================
+  # 4. NADA / DEALER TRADE ASSOCIATIONS
+  # =============================================================
+  - name: NADA Press Releases
+    category: trade_association
+    url: https://www.nada.org/nada/news/press-releases
+    rss: null
+    weight: 9
+    update_frequency: weekly
+    notes: No public RSS found. Scrape page; cadence is light enough that a weekly poll is enough.
+
+  - name: NADA Headlines
+    category: trade_association
+    url: https://www.nada.org/nada/news/nada-headlines
+    rss: null
+    weight: 8
+    update_frequency: daily
+    notes: NADA's curated daily news hub. Aggregator content; valuable as a what-NADA-thinks-matters signal. Scrape.
+
+  - name: NIADA Dashboard
+    category: trade_association
+    url: https://niada.com/dashboard/
+    rss: null
+    weight: 8
+    update_frequency: daily
+    notes: Used-car independent dealer association. Up-to-the-minute news hub. Scrape; no public RSS.
+
+  - name: ASOTU Daily
+    category: trade_association
+    url: https://daily.asotu.com/
+    rss: https://daily.asotu.com/rss.xml
+    weight: 8
+    update_frequency: daily
+    notes: Daily dealer-industry recap. RSS path confirmed via Substack-style infra. Verify on first crawl.
+
+  - name: ATAE (Automotive Trade Association Executives)
+    category: trade_association
+    url: https://www.ataenet.org/
+    rss: null
+    weight: 5
+    update_frequency: monthly
+    notes: Association of state-dealer-association execs. Low cadence; useful for state-level lobbying signals.
+
+  - name: AIADA (Imported auto dealers)
+    category: trade_association
+    url: https://www.aiada.org/
+    rss: null
+    weight: 6
+    update_frequency: weekly
+    notes: Tariff and import-policy signal. Scrape.
+
+  # =============================================================
+  # 5. SaaS VENDOR NEWSROOMS
+  # =============================================================
+  - name: CDK Global Newsroom
+    category: vendor_news
+    url: https://www.cdkglobal.com/insights
+    rss: null
+    weight: 8
+    update_frequency: event
+    notes: After June 2024 cyberattack, CDK announcements are high-attention. No public RSS; scrape press section. Mirror via PR Newswire CDK channel.
+
+  - name: Reynolds and Reynolds News
+    category: vendor_news
+    url: https://www.reyrey.com/news
+    rss: null
+    weight: 7
+    update_frequency: event
+    notes: Quiet on press; scrape monthly.
+
+  - name: Tekion News
+    category: vendor_news
+    url: https://tekion.com/news
+    rss: null
+    weight: 8
+    update_frequency: event
+    notes: Active challenger DMS/CRM. Frequent product launches and lawsuits with CDK. Scrape.
+
+  - name: Dealertrack Press Releases
+    category: vendor_news
+    url: https://us.dealertrack.com/resources/resource-format/press-release/
+    rss: null
+    weight: 7
+    update_frequency: event
+    notes: Cox Automotive subsidiary. Scrape.
+
+  - name: vAuto / Cox Automotive Insights
+    category: vendor_news
+    url: https://www.coxautoinc.com/newsroom/
+    rss: null
+    weight: 9
+    update_frequency: weekly
+    notes: Includes Manheim, vAuto, Kelley Blue Book, AutoTrader, Dealer.com, Dealertrack. Cox is the single most important vendor newsroom for retail.
+
+  - name: RouteOne News
+    category: vendor_news
+    url: https://www.routeone.com/news/
+    rss: null
+    weight: 6
+    update_frequency: event
+    notes: Indirect-lending platform. Scrape.
+
+  - name: DealerSocket / Solera News
+    category: vendor_news
+    url: https://www.solera.com/about/news/
+    rss: null
+    weight: 6
+    update_frequency: event
+    notes: DealerSocket is now a Solera brand. Scrape parent newsroom.
+
+  - name: Impel News
+    category: vendor_news
+    url: https://impel.ai/newsroom/
+    rss: https://impel.ai/feed/
+    weight: 6
+    update_frequency: event
+    notes: Generative AI for dealers. WordPress feed likely available.
+
+  # =============================================================
+  # 6. USED-CAR / WHOLESALE / INVENTORY DATA
+  # =============================================================
+  - name: Manheim Used Vehicle Value Index
+    category: market_data
+    url: https://www.coxautoinc.com/insights-hub/
+    rss: null
+    weight: 10
+    update_frequency: monthly
+    notes: Tier-1. Mid-month and end-of-month MUVVI releases drive entire newsletter cycles. Scrape Insights Hub or subscribe to Cox newsletter and parse email.
+
+  - name: Cox Automotive Industry Insights
+    category: market_data
+    url: https://www.coxautoinc.com/market-insights/
+    rss: null
+    weight: 10
+    update_frequency: weekly
+    notes: Tier-1. Includes CADSI (dealer sentiment index), forecasts, and OEM/dealer briefings.
+
+  - name: Kelley Blue Book Industry News
+    category: market_data
+    url: https://www.kbb.com/car-news/
+    rss: https://www.kbb.com/car-news/feed/
+    weight: 7
+    update_frequency: daily
+    notes: Consumer-facing but includes pricing trend reports useful for editorial.
+
+  - name: Black Book Insights
+    category: market_data
+    url: https://www.blackbook.com/insights/
+    rss: null
+    weight: 8
+    update_frequency: weekly
+    notes: Wholesale valuation alternative to MMR. Weekly Market Insights report. Scrape.
+
+  - name: J.D. Power Auto Industry
+    category: market_data
+    url: https://www.jdpower.com/business/automotive
+    rss: null
+    weight: 8
+    update_frequency: monthly
+    notes: Monthly retail sales forecasts (jointly with GlobalData). Scrape press releases page.
+
+  - name: AutoTrader Insights
+    category: market_data
+    url: https://press.autotrader.com/
+    rss: null
+    weight: 6
+    update_frequency: monthly
+    notes: Cox Automotive sub-brand. Lower priority since covered by Cox Automotive newsroom.
+
+  - name: Edmunds Industry Center
+    category: market_data
+    url: https://www.edmunds.com/industry/
+    rss: https://www.edmunds.com/rss.html
+    weight: 7
+    update_frequency: monthly
+    notes: Monthly forecasts and used-car retention reports. RSS index page lists topical feeds.
+
+  # =============================================================
+  # 7. X/TWITTER HANDLES (require Apify or X API)
+  # =============================================================
+  - name: "@GuyDealership (Car Dealership Guy)"
+    category: social_x
+    url: https://x.com/GuyDealership
+    rss: null
+    weight: 9
+    update_frequency: daily
+    notes: 400k+ followers; viral leading indicator. Requires Apify twitter-scraper or paid X API.
+
+  - name: "@dealership (CDG News)"
+    category: social_x
+    url: https://x.com/dealership
+    rss: null
+    weight: 8
+    update_frequency: daily
+    notes: CDG news arm. Apify or X API.
+
+  - name: "@CDG_Podcast"
+    category: social_x
+    url: https://x.com/CDG_Podcast
+    rss: null
+    weight: 6
+    update_frequency: weekly
+    notes: Podcast announcements; lower-signal.
+
+  - name: "@Automotive_News"
+    category: social_x
+    url: https://x.com/Automotive_News
+    rss: null
+    weight: 8
+    update_frequency: daily
+    notes: Trade-press flagship account. Apify.
+
+  - name: "@WardsAuto"
+    category: social_x
+    url: https://x.com/WardsAuto
+    rss: null
+    weight: 7
+    update_frequency: daily
+    notes: Apify.
+
+  - name: "@CBTNews"
+    category: social_x
+    url: https://x.com/CBTNews
+    rss: null
+    weight: 7
+    update_frequency: daily
+    notes: Apify.
+
+  - name: "@asotu"
+    category: social_x
+    url: https://x.com/asotu
+    rss: null
+    weight: 7
+    update_frequency: daily
+    notes: ASOTU community account.
+
+  - name: "@bbenstock (Brian Benstock)"
+    category: social_x
+    url: https://x.com/bbenstock
+    rss: null
+    weight: 7
+    update_frequency: weekly
+    notes: GM Paragon Honda. Posts publicly about dealership ops.
+
+  - name: "@Edmunds"
+    category: social_x
+    url: https://x.com/edmunds
+    rss: null
+    weight: 6
+    update_frequency: daily
+    notes: Industry analyst commentary (Caldwell, Drury).
+
+  - name: "@CoxAutomotive"
+    category: social_x
+    url: https://x.com/CoxAutomotive
+    rss: null
+    weight: 7
+    update_frequency: daily
+    notes: Mirrors press releases plus analyst commentary.
+
+  - name: "@KBB_co"
+    category: social_x
+    url: https://x.com/KBB_co
+    rss: null
+    weight: 5
+    update_frequency: daily
+    notes: KBB analyst data.
+
+  - name: "@FTC"
+    category: social_x
+    url: https://x.com/FTC
+    rss: null
+    weight: 8
+    update_frequency: daily
+    notes: First-mover signal for enforcement actions before press release indexes.
+
+  - name: "@CFPB"
+    category: social_x
+    url: https://x.com/CFPB
+    rss: null
+    weight: 8
+    update_frequency: daily
+    notes: Same pattern as FTC.
+
+  - name: "@NHTSAgov"
+    category: social_x
+    url: https://x.com/NHTSAgov
+    rss: null
+    weight: 7
+    update_frequency: daily
+    notes: Recall announcements often hit X first.
+
+  - name: "@NADAUpdate"
+    category: social_x
+    url: https://x.com/NADAUpdate
+    rss: null
+    weight: 6
+    update_frequency: daily
+    notes: NADA's voice account.
+
+  # =============================================================
+  # 8. SUBREDDITS + HN
+  # =============================================================
+  - name: r/CarDealershipGuys
+    category: social_reddit
+    url: https://www.reddit.com/r/CarDealershipGuys/
+    rss: https://www.reddit.com/r/CarDealershipGuys/.rss
+    weight: 7
+    update_frequency: daily
+    notes: Working dealers post anonymously. High signal for what's actually happening on the floor.
+
+  - name: r/askcardealers
+    category: social_reddit
+    url: https://www.reddit.com/r/askcardealers/
+    rss: https://www.reddit.com/r/askcardealers/.rss
+    weight: 6
+    update_frequency: daily
+    notes: Customer-side; useful as customer-sentiment foil.
+
+  - name: r/usedcars
+    category: social_reddit
+    url: https://www.reddit.com/r/usedcars/
+    rss: https://www.reddit.com/r/usedcars/.rss
+    weight: 6
+    update_frequency: daily
+    notes: Used-buyer sentiment, BHPH complaints, F&I product perception.
+
+  - name: r/Finance_F1NSI (F&I-adjacent)
+    category: social_reddit
+    url: https://www.reddit.com/r/Finance_F1NSI/
+    rss: https://www.reddit.com/r/Finance_F1NSI/.rss
+    weight: 4
+    update_frequency: weekly
+    notes: Smaller subreddit but specific to dealership F&I roles.
+
+  - name: Hacker News - "dealer" search
+    category: social_reddit
+    url: https://hn.algolia.com/?q=dealer
+    rss: https://hnrss.org/newest?q=dealer
+    weight: 5
+    update_frequency: daily
+    notes: Catches CDK breach-style stories, fintech-disrupting-auto-finance, Carvana coverage. Use the Algolia HN RSS bridge.
+
+  # =============================================================
+  # 9. YOUTUBE CHANNELS (transcript scraping)
+  # =============================================================
+  - name: CBT News YouTube
+    category: youtube
+    url: https://www.youtube.com/@CBTNews
+    rss: https://www.youtube.com/feeds/videos.xml?channel_id=UCxKEhgpZ41tCYcXqNZAFbXg
+    weight: 8
+    update_frequency: daily
+    notes: YouTube exposes a per-channel videos.xml RSS. Confirm channel_id on first crawl. Use whisper or YouTube transcript API for body text.
+
+  - name: ASOTU YouTube
+    category: youtube
+    url: https://www.youtube.com/@ASOTU
+    rss: https://www.youtube.com/feeds/videos.xml?channel_id=UC61SJ883L5W8ACiM0XVPF5g
+    weight: 7
+    update_frequency: daily
+    notes: Channel ID confirmed in search results.
+
+  - name: Brian Benstock YouTube
+    category: youtube
+    url: https://www.youtube.com/channel/UC-pGk6lHDPBha-CAwgwIIvQ
+    rss: https://www.youtube.com/feeds/videos.xml?channel_id=UC-pGk6lHDPBha-CAwgwIIvQ
+    weight: 6
+    update_frequency: weekly
+    notes: Channel ID confirmed.
+
+  - name: Brian Maxwell - Selling for Success
+    category: youtube
+    url: https://www.youtube.com/channel/UCMsTTMkNHvMLf26Bzhohi7g
+    rss: https://www.youtube.com/feeds/videos.xml?channel_id=UCMsTTMkNHvMLf26Bzhohi7g
+    weight: 5
+    update_frequency: weekly
+    notes: F&I and sales training. Channel ID confirmed.
+
+  - name: Car Dealership Guy YouTube
+    category: youtube
+    url: https://www.youtube.com/@CarDealershipGuy
+    rss: null
+    weight: 8
+    update_frequency: weekly
+    notes: Need to resolve channel_id from /@handle. Long-form interviews with dealer principals and execs.
+
+  # =============================================================
+  # 10. SEC FILINGS / EARNINGS (public dealer groups)
+  # =============================================================
+  - name: SEC EDGAR - AutoNation (AN)
+    category: sec_filings
+    url: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000350698&type=&dateb=&owner=include&count=40
+    rss: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000350698&type=&dateb=&owner=include&count=40&output=atom
+    weight: 9
+    update_frequency: event
+    notes: SEC EDGAR exposes Atom feeds via the &output=atom parameter on any company filings page. Tier-1 for quarterly earnings color.
+
+  - name: SEC EDGAR - Lithia Motors (LAD)
+    category: sec_filings
+    url: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001023128&type=&dateb=&owner=include&count=40
+    rss: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001023128&type=&dateb=&owner=include&count=40&output=atom
+    weight: 9
+    update_frequency: event
+    notes: Largest US dealer group by volume. Tier-1 for M&A signal.
+
+  - name: SEC EDGAR - Penske Auto (PAG)
+    category: sec_filings
+    url: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001019849&type=&dateb=&owner=include&count=40
+    rss: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001019849&type=&dateb=&owner=include&count=40&output=atom
+    weight: 8
+    update_frequency: event
+    notes: Premium/luxury bias.
+
+  - name: SEC EDGAR - Group 1 Automotive (GPI)
+    category: sec_filings
+    url: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001031203&type=&dateb=&owner=include&count=40
+    rss: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001031203&type=&dateb=&owner=include&count=40&output=atom
+    weight: 8
+    update_frequency: event
+    notes: Strong UK + US footprint.
+
+  - name: SEC EDGAR - Sonic Automotive (SAH)
+    category: sec_filings
+    url: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001043509&type=&dateb=&owner=include&count=40
+    rss: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001043509&type=&dateb=&owner=include&count=40&output=atom
+    weight: 7
+    update_frequency: event
+    notes: Includes EchoPark used-car operation.
+
+  - name: SEC EDGAR - Asbury Automotive (ABG)
+    category: sec_filings
+    url: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001144980&type=&dateb=&owner=include&count=40
+    rss: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001144980&type=&dateb=&owner=include&count=40&output=atom
+    weight: 7
+    update_frequency: event
+    notes: Aggressive acquirer; F&I product penetration leader.
+
+  - name: SEC EDGAR - CarMax (KMX)
+    category: sec_filings
+    url: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001170010&type=&dateb=&owner=include&count=40
+    rss: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001170010&type=&dateb=&owner=include&count=40&output=atom
+    weight: 9
+    update_frequency: event
+    notes: Bellwether for used-car retail and CAF (CarMax Auto Finance).
+
+  - name: SEC EDGAR - Carvana (CVNA)
+    category: sec_filings
+    url: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001690820&type=&dateb=&owner=include&count=40
+    rss: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001690820&type=&dateb=&owner=include&count=40&output=atom
+    weight: 8
+    update_frequency: event
+    notes: Disruption signal; ADESA wholesale ops moves.
+
+  - name: SEC EDGAR - Cars.com (CARS)
+    category: sec_filings
+    url: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001683606&type=&dateb=&owner=include&count=40
+    rss: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001683606&type=&dateb=&owner=include&count=40&output=atom
+    weight: 6
+    update_frequency: event
+    notes: Dealer-marketing spend signal.
+
+  - name: SEC EDGAR - TrueCar (TRUE)
+    category: sec_filings
+    url: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001327318&type=&dateb=&owner=include&count=40
+    rss: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001327318&type=&dateb=&owner=include&count=40&output=atom
+    weight: 5
+    update_frequency: event
+    notes: Lead-gen dealer-spend signal.

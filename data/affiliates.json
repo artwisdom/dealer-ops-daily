@@ -1,0 +1,12 @@
+[
+  {
+    "product_id": "dealerintel",
+    "product_name": "DealerIntel",
+    "one_liner": "The dealer-tech analytics platform built by the same team. Spot leaks in your variable ops in 60 seconds.",
+    "url": "https://dealerintel.example/?utm_source=dealer-ops-daily&utm_medium=tool-of-day",
+    "semantic_tags": ["analytics", "variable-ops", "f&i", "store-ops", "compliance", "dms-data"],
+    "disclosure_type": "Affiliate",
+    "cpc_or_commission_note": "First-party — no affiliate commission, but tracked separately for ROI",
+    "active": true
+  }
+]

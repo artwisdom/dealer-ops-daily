@@ -1,0 +1,63 @@
+name: Weekly meta-issue (Sunday)
+
+on:
+  schedule:
+    # 14:30 UTC Sunday — after weekly-loops has run, gives Opus the latest source weights
+    - cron: "30 14 * * 0"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: weekly-meta-issue
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      BEEHIIV_API_KEY: ${{ secrets.BEEHIIV_API_KEY }}
+      BEEHIIV_PUBLICATION_ID: ${{ secrets.BEEHIIV_PUBLICATION_ID }}
+      REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
+      PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+      DRY_RUN: ${{ inputs.dry_run || 'false' }}
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Self-test
+        run: python -m pipeline.weekly_meta --selftest
+
+      - name: Generate + publish weekly meta-issue
+        if: ${{ inputs.dry_run != true }}
+        run: python -m pipeline.weekly_meta
+
+      - name: Generate + publish (dry mode, manual)
+        if: ${{ inputs.dry_run == true }}
+        run: python -m pipeline.weekly_meta --dry-run
+
+      - name: Commit issue audit
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          git config user.name "dealer-ops-daily-bot"
+          git config user.email "bot@dealeropsdaily.com"
+          git add issues/
+          if git diff --cached --quiet; then
+            echo "No issue files changed"
+          else
+            git commit -m "weekly-meta: $(date -u +%Y-%m-%d)"
+            git push
+          fi
