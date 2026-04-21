@@ -1,0 +1,11 @@
+[
+  {
+    "picked_at": "2026-04-21T06:26:10.621734+00:00",
+    "picked_id": "off_2",
+    "score": 7,
+    "reasoning": "deterministic dry pick: highest payout among on-niche offers (F&I Profitability Briefing, $5.10/sub)",
+    "dry_run": false,
+    "accepted": false,
+    "error": "RetryError[<Future at 0x7f21953015b0 state=finished raised LocalProtocolError>]"
+  }
+]
