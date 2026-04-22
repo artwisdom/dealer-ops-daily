@@ -122,6 +122,23 @@ def draft_with_claude(
     if raw.get("error") == "guardrail_violation":
         raise RuntimeError(f"Editorial guardrail violation: {raw.get('violations')} — {raw.get('suggested_fix')}")
 
+    # Coerce guardrail_self_check values to strict booleans — Claude occasionally
+    # returns narrative strings like "PARTIAL — ..." when a check is partially met.
+    # Any non-exact-True becomes False; the original reason is logged.
+    meta = raw.get("metadata") or {}
+    sc = meta.get("guardrail_self_check") or {}
+    coerced: dict[str, bool] = {}
+    for key, val in list(sc.items()):
+        if val is True:
+            coerced[key] = True
+        else:
+            coerced[key] = False
+            if val is not False:
+                log.warning("guardrail_self_check.%s coerced to False (model returned: %r)", key, val)
+    sc.update(coerced)
+    meta["guardrail_self_check"] = sc
+    raw["metadata"] = meta
+
     issue = Issue.model_validate(raw)
     issue.dry_run = dry_run
     _enforce_guardrails(issue)
