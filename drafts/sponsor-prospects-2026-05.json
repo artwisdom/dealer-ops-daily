@@ -1,0 +1,114 @@
+{
+  "generated_at": "2025-01-30T00:00:00Z",
+  "subscriber_count_used": 1500,
+  "prospects": [
+    {
+      "company": "RouteOne",
+      "category": "F&I platform / dealer financing portal",
+      "fit_reason": "F&I directors and desk managers are RouteOne's core daily users, making this audience a direct line to the decision-makers who champion or switch their F&I platform.",
+      "pitch_angle": "Category-exclusive 'F&I Tech Spotlight' weekly slot \u2014 sole F&I platform sponsor for 90 days, reinforcing brand presence at the point of daily workflow decisions.",
+      "cpm_low": 55,
+      "cpm_high": 85,
+      "warmth": "warm"
+    },
+    {
+      "company": "Protective Asset Protection",
+      "category": "F&I product manufacturer (VSC, GAP, ancillary products)",
+      "fit_reason": "F&I directors who read daily newsletters are actively evaluating product menus and provider relationships, exactly the moment Protective wants to be visible.",
+      "pitch_angle": "Dedicated 'Product of the Month' feature with a brief case-study format showing dealer PVR lift \u2014 positions Protective as a thought-leader, not just an ad.",
+      "cpm_low": 50,
+      "cpm_high": 80,
+      "warmth": "warm"
+    },
+    {
+      "company": "Compli (Netchex Dealer Division)",
+      "category": "HR & compliance software for dealerships",
+      "fit_reason": "Compliance leads and floor GMs face escalating federal and state labor compliance burdens, and a compliance-focused tool vendor gets premium relevance with this subscriber persona.",
+      "pitch_angle": "Sponsor the recurring 'Compliance Corner' section \u2014 category-exclusive placement adjacent to compliance editorial, framing Compli as the go-to solution in context.",
+      "cpm_low": 45,
+      "cpm_high": 75,
+      "warmth": "cold"
+    },
+    {
+      "company": "DealerSocket (Solera)",
+      "category": "CRM / DMS vendor",
+      "fit_reason": "Used-car managers and desk managers are the daily operators of CRM tools, and a newsletter reaching them with workflow tips is a credibility-building channel DealerSocket actively seeks.",
+      "pitch_angle": "Weekly 'Tool of the Day' rotation spot \u2014 short-form tip tied to a DealerSocket feature, bridging editorial value with soft product exposure to active CRM evaluators.",
+      "cpm_low": 60,
+      "cpm_high": 95,
+      "warmth": "warm"
+    },
+    {
+      "company": "Spireon (Solera) \u2014 FleetLocate / NSpire",
+      "category": "Vehicle tracking & inventory intelligence (GPS/telematics)",
+      "fit_reason": "Used-car managers and GMs managing lot inventory are prime buyers of GPS-based lot management and vehicle intelligence tools that reduce shrink and improve turn.",
+      "pitch_angle": "Sponsor an 'Inventory Intel' weekly feature \u2014 position Spireon's data insights as the analytical backbone behind smarter used-car decisions, with a demo CTA.",
+      "cpm_low": 45,
+      "cpm_high": 70,
+      "warmth": "cold"
+    },
+    {
+      "company": "AutoFi",
+      "category": "Digital retailing / F&I desking software",
+      "fit_reason": "Desk managers and F&I directors evaluating digital-to-showroom pipeline tools are AutoFi's ideal prospects, and a newsletter they read for operational tips is a high-trust channel.",
+      "pitch_angle": "Category-exclusive digital retailing sponsorship for a 60-day run \u2014 banner plus a dedicated 'Desk Ops Deep Dive' advertorial exploring F&I workflow integration.",
+      "cpm_low": 55,
+      "cpm_high": 85,
+      "warmth": "warm"
+    },
+    {
+      "company": "Dealerware",
+      "category": "Loaner fleet & mobility management software",
+      "fit_reason": "Floor GMs and operations leads managing service loaner fleets face real cost and liability exposure \u2014 Dealerware solves a specific, under-served pain point this audience owns.",
+      "pitch_angle": "'Tool of the Day' rotation featuring a loaner fleet ROI angle \u2014 short editorial showing cost-per-loaner math, with Dealerware as the sponsored solution.",
+      "cpm_low": 35,
+      "cpm_high": 60,
+      "warmth": "cold"
+    },
+    {
+      "company": "Reynolds Document Services (Reynolds & Reynolds)",
+      "category": "Compliance forms & contracting documents",
+      "fit_reason": "F&I directors and compliance leads are directly responsible for contract accuracy and regulatory form updates \u2014 Reynolds forms are a daily-use product for this exact persona.",
+      "pitch_angle": "Sponsor a quarterly 'Forms & Compliance Update' digest issue \u2014 Reynolds branded, summarizing new regulatory form requirements with a direct CTA to their forms catalog.",
+      "cpm_low": 50,
+      "cpm_high": 80,
+      "warmth": "warm"
+    },
+    {
+      "company": "Informed.IQ",
+      "category": "AI-powered income & document verification for F&I",
+      "fit_reason": "F&I directors managing stipulation risk and funding delays are the precise buyer persona Informed.IQ targets, and a newsletter position gives them warm access during the evaluation phase.",
+      "pitch_angle": "Category-exclusive 'F&I Friction Fix' sponsored slot \u2014 frame Informed.IQ as the solution to the #1 funding delay problem, with a benchmark data hook to drive clicks.",
+      "cpm_low": 45,
+      "cpm_high": 75,
+      "warmth": "cold"
+    },
+    {
+      "company": "Lotlinx",
+      "category": "AI-driven inventory marketing & VIN-level advertising",
+      "fit_reason": "Used-car managers responsible for aging inventory and turn rates are Lotlinx's core customers, and an ops-focused newsletter reaching them daily is a direct acquisition channel.",
+      "pitch_angle": "Sponsor the 'Used Car Desk' weekly section \u2014 Lotlinx-branded inventory aging tip plus a soft CTA to their VIN-level demo, reinforcing brand during used-car strategy reading.",
+      "cpm_low": 50,
+      "cpm_high": 80,
+      "warmth": "warm"
+    },
+    {
+      "company": "ACV Auctions",
+      "category": "Digital wholesale auction platform",
+      "fit_reason": "Used-car managers who source and wholesale vehicles are ACV's transacting audience \u2014 reaching them in a professional ops newsletter builds preference before the next vehicle acquisition decision.",
+      "pitch_angle": "Category-exclusive wholesale marketplace sponsorship \u2014 'Wholesale Market Pulse' weekly data snippet sponsored by ACV, blending market intelligence with brand visibility.",
+      "cpm_low": 55,
+      "cpm_high": 90,
+      "warmth": "hot"
+    },
+    {
+      "company": "Safe-Guard Products International",
+      "category": "F&I ancillary product manufacturer (GAP, tire & wheel, appearance)",
+      "fit_reason": "F&I directors actively managing their ancillary product mix and per-copy revenue are Safe-Guard's direct buyers, and a high-trust daily newsletter is a credible channel to reach them at scale.",
+      "pitch_angle": "Dedicated F&I product advertorial once per month \u2014 co-authored 'PVR Builder' case study format, sponsored by Safe-Guard, demonstrating a specific product's attach-rate impact.",
+      "cpm_low": 50,
+      "cpm_high": 80,
+      "warmth": "warm"
+    }
+  ]
+}
